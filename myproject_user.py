@@ -17,6 +17,8 @@ def login_user(username, password, file_path="users.txt"):
         with open(file_path, "r") as file:
             for line in file:
                 stored_username, stored_password = line.strip().split(",")
+                stored_username = stored_username.strip()
+                stored_password = stored_password.strip()
                 if username == stored_username and hashed_password == stored_password:
                     print("Login succesful!")
                     return True

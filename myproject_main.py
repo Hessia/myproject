@@ -19,31 +19,12 @@ def handle_login():
         messagebox.showerror("Error", "Please fill in both fields.")
         return
     if login_user(username, password):
-        messagebox.showinfo("Success", "Login successful!")
         logged_in_user.set(username)
         frame_main.pack_forget()
         frame_library.pack()
+        messagebox.showinfo("Success", "Login successful!")
     else:
         messagebox.showerror("Error", "Invalid password or username.")
-
-    from myproject_user import hash_password
-    hashed_password = hash_password(password)
-
-    try:
-        with open ("users.txt", "r") as file:
-            users = file.readlines()
-            for user in users:
-                if "," in user:
-                    stored_username, stored_password = user.strip().split(",", 1)
-                    stored_username = stored_username.strip()
-                    stored_password = stored_password.strip()
-                    if username == stored_username and hashed_password == stored_password:
-                        messagebox.showinfo("Success", "Login successful!")
-                        return
-
-            messagebox.showerror("Error", "Invalid username or password.")
-    except FileNotFoundError:
-        messagebox.showerror("Error", "No registered user found.")
 
 
 def handle_exit():
