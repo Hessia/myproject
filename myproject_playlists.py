@@ -45,8 +45,8 @@ def view_playlists(username, file_path="playlists.txt"):
         lines = []
 
     for line in lines:
-        if line.startswith(username):
-            _, playlist_name, books = line.strip().partition(":")[2].partition(":")
+        if line.startswith(f"{username}:"):
+            user, playlist_name, books = line.strip().split(":", 2) 
             if playlist_name not in playlists:
                 playlists[playlist_name.strip()] = []
             if books:
