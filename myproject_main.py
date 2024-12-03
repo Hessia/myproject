@@ -30,24 +30,37 @@ def handle_login():
 def handle_exit():
     root.destroy()
 
-def create_playlist(username, playlist_name, file_path="playlists.txt"):
+def handle_create_playlist():
     username = logged_in_user.get()
+    if not username:
+        messagebox.showerror("Error", "You must log in first.")
+        return
     playlist_name = simpledialog.askstring("Create Playlist", "Enter playlist name:")
     if playlist_name:
-        create_playlist(username, playlist_name)
+        create_playlist(username,playlist_name)
 
-def add_book_to_playlist(username, playlist_name, book, comment="", file_path="playlists.txt"):
+def handle_add_book_to_playlist():
     username = logged_in_user.get()
+    if not username:
+        messagebox.showerror("Error", "You must log in first.")
+        return
     playlist_name = simpledialog.askstring("Add Book", "Enter playlist name:")
-    if playlist_name:
-        book = simpledialog.askstring("Add Book", "Enter book name:")
-        comment = simpledialog.askstring("Add Book", "Enter comment (optional):")
-        if book:
-            add_book_to_playlist(username, playlist_name, book, comment)
+    if not playlist_name:
+        messagebox.showerror("Error", "Playlist name is required.")
+        return
+    book = simpledialog.askstring("Add Book", "Enter a book name:")
+    if not book:
+        messagebox.showerror("Error", "Book name is required.")
+        return
+    comment = simpledialog.askstring("Add Book", "Enter comment (optional):")
+    add_book_to_playlist(username, playlist_name, book, comment)
 
 
-def view_playlists(username, file_path="playlists.txt"):
+def handle_view_playlists():
     username = logged_in_user.get()
+    if not username:
+        messagebox.showerror("Error", "You must log in first.")
+        return
     view_playlists(username)
 
 
@@ -99,13 +112,13 @@ button_exit.pack(pady=5)
 
 frame_library = tk.Frame(root, bg="#5E8BF2", padx=20, pady=20)
 
-button_create_playlist = tk.Button(frame_library, text="Create Playlist", command=create_playlist, bg="#5E8BF2")
+button_create_playlist = tk.Button(frame_library, text="Create Playlist", command=handle_create_playlist, bg="#5E8BF2")
 button_create_playlist.pack(pady=5)
 
-button_add_book = tk.Button(frame_library, text="Add Book to Playlist", command=add_book_to_playlist, bg="#5E8BF2")
+button_add_book = tk.Button(frame_library, text="Add Book to Playlist", command=handle_add_book_to_playlist, bg="#5E8BF2")
 button_add_book.pack(pady=5)
 
-button_view_playlists = tk.Button(frame_library, text="View Playlists", command=view_playlists, bg="#5E8BF2")
+button_view_playlists = tk.Button(frame_library, text="View Playlists", command=handle_view_playlists, bg="#5E8BF2")
 button_view_playlists.pack(pady=5)
 
 button_logout = tk.Button(frame_library, text="Log Out", command=lambda: [frame_library.pack_forget(), frame_main.pack()], bg="#5E8BF2")
