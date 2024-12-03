@@ -69,7 +69,7 @@ def handle_enter(event):
     handle_login()
 
 root = tk.Tk()
-root.title("Library App")
+root.title("Bookify")
 window_width = 800
 window_height = 800
 screen_width = root.winfo_screenwidth()
@@ -88,7 +88,7 @@ frame_library = tk.Frame(root, bg="#5E8BF2", padx=20, pady=20)
 frame = tk.Frame(root, padx=20, pady=20, bg="#5E8BF2")
 frame.pack()
 
-label_title = tk.Label(frame, text="Welcome to the Library App", font=("Arial", 16), bg="#5E8BF2")
+label_title = tk.Label(frame, text="Welcome to Bookify", font=("Arial", 16), bg="#5E8BF2")
 label_title.pack(pady=10)
 
 label_username = tk.Label(frame, text="Username: ", bg="#5E8BF2")
