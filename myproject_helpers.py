@@ -68,3 +68,4 @@ def view_playlists(username, file_path="playlists.txt"):
 
     messagebox.showinfo("Playlists", playlist_display.strip())
     pass
+
