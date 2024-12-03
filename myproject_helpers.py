@@ -1,5 +1,4 @@
 from tkinter import messagebox
-from myproject_helpers import create_playlist, add_book_to_playlist, view_playlists
 
 
 def create_playlist(username, playlist_name, file_path="playlists.txt"):
@@ -7,12 +6,12 @@ def create_playlist(username, playlist_name, file_path="playlists.txt"):
     with open(file_path, "a") as file:
         file.write(f"{username}:{playlist_name}:\n")
     messagebox.showinfo("Success", f"Playlist '{playlist_name}' created succesfully!")
+    pass
 
 def add_book_to_playlist(username, playlist_name, book, comment="", file_path="playlists.txt"):
     """Add a book with an optional comment to a user's playlist."""
     updated_lines = []
     found = False
-
 
     try:
         with open(file_path, "r") as file:
@@ -32,7 +31,7 @@ def add_book_to_playlist(username, playlist_name, book, comment="", file_path="p
     with open(file_path, "w") as file:
         file.writelines(updated_lines)
     messagebox.showinfo("Success", f"Book '{book}' added to playlist '{playlist_name}'.")
-
+    pass
 
 def view_playlists(username, file_path="playlists.txt"):
     """Display all playlists and books for the given user."""
@@ -68,4 +67,5 @@ def view_playlists(username, file_path="playlists.txt"):
         playlist_display += "\n"
 
     messagebox.showinfo("Playlists", playlist_display.strip())
+    pass
 

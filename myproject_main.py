@@ -1,7 +1,7 @@
 import tkinter as tk
 from tkinter import messagebox, simpledialog
 from myproject_user import register_user, login_user
-
+from myproject_helpers import create_playlist, add_book_to_playlist, view_playlists
 
 def handle_register():
     username = entry_username.get()
