@@ -1,5 +1,5 @@
 from tkinter import messagebox
-
+# now there is again playlists codes because my application wasnt working properly so i just have the codes again here and making sure my data will saved to "playlists.txt"
 
 def create_playlist(username, playlist_name, file_path="playlists.txt"):
     """Create a new playlist for the user."""
