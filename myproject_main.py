@@ -2,7 +2,7 @@ import tkinter as tk
 from tkinter import messagebox, simpledialog
 from myproject_user import register_user, login_user
 from myproject_helpers import create_playlist, add_book_to_playlist, view_playlists
-
+# here i am doing my main menu
 def handle_register():
     username = entry_username.get()
     password = entry_password.get()
@@ -67,7 +67,7 @@ def handle_view_playlists():
 def handle_enter(event):
     handle_register()
     handle_login()
-
+# i am adjusting the color, title and other stuffs to make it look better
 root = tk.Tk()
 root.title("Bookify")
 window_width = 800
@@ -100,7 +100,7 @@ label_password = tk.Label(frame, text="Password: ", bg="#5E8BF2")
 label_password.pack()
 entry_password = tk.Entry(frame, show="*")
 entry_password.pack(pady=5)
-
+# adding the buttons
 button_register = tk.Button(frame, text="Register", command=handle_register, bg="#5E8BF2", takefocus=False, relief="flat", highlightthickness=0, bd=0)
 button_register.pack(pady=5)
 
